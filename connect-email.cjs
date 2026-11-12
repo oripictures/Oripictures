@@ -1,0 +1,12 @@
+const fs=require('fs');
+let html=fs.readFileSync('dist/index.html','utf8');
+html=html.replace('Thoughtfully seen. Honestly remembered.</span></div><div class="contact-form-wrap">','<a href="mailto:info@oripictures.com">info@oripictures.com ↗</a></span></div><div class="contact-form-wrap">');
+html=html.replace('Prepare your enquiry as a private draft.<br>Nothing is submitted online.','Prepare an email to info@oripictures.com.<br>You review and send it in your email app.').replace('Save enquiry draft <span>↗</span>','Prepare enquiry <span>↗</span>');
+fs.writeFileSync('dist/index.html',html);
+let js=fs.readFileSync('dist/app.js','utf8');
+js=js.replace('This preview does not submit your enquiry to a server. The form creates a text-file draft on your device when you choose “Save enquiry draft”. Its contents are not saved to this site’s browser storage.','The enquiry form prepares a message addressed to info@oripictures.com. You can review the details, then choose to open your email app and send it yourself. This site does not send your enquiry automatically or store its contents in browser storage. You can also download a private copy.');
+js=js.replace('Your draft is ready. Download it to keep a copy. It has not been sent; the studio’s booking email will be added before this site opens for enquiries.','Your message is ready for info@oripictures.com. Open your email app to review and send it. Nothing has been sent yet.');
+js=js.replace('<button class="round-button" id="downloadDraft">Download your draft <span>↓</span></button>','<div class="enquiry-actions"><a class="round-button" id="emailEnquiry">Open email app <span>↗</span></a><button class="round-button" id="downloadDraft">Download a copy <span>↓</span></button></div><p class="email-fallback">Prefer to write directly? <a href="mailto:info@oripictures.com">info@oripictures.com</a></p>');
+js=js.replace("$('#downloadDraft').onclick=()=>{downloadDraft();", "$('#emailEnquiry').href='mailto:info@oripictures.com?subject='+encodeURIComponent('Photography enquiry — '+data.service+' — '+data.name)+'&body='+encodeURIComponent(draftText.replace('This is a draft. It has not been sent and does not confirm a booking.',''));$('#downloadDraft').onclick=()=>{downloadDraft();");
+fs.writeFileSync('dist/app.js',js);
+fs.appendFileSync('dist/style.css','\n.enquiry-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.info-dialog .email-fallback{font-size:12px;margin-top:25px}.contact-foot a{border-bottom:1px solid #ffffff55;padding-bottom:3px}.contact-foot{opacity:.85}\n');
