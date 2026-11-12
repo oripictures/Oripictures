@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: oripictures
+    runtime: static
+    buildCommand: echo "No build step; publishing dist/"
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: false
+    domains:
+      - oripictures.com
+      - www.oripictures.com
