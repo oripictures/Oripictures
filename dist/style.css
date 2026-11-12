@@ -12,3 +12,15 @@
 .viewer-top>span.viewer-logo{font-size:0;line-height:0}
 .viewer-logo img{width:auto;height:38px;object-fit:contain}
 @media(max-width:700px){.smallmark img{height:48px}.footer-wordmark img{width:min(82vw,440px)}.viewer-logo img{height:32px}}
+
+/* Simple three-line menu icon (no box) */
+.menu-toggle{background:none;border-radius:0;width:auto;padding:10px 2px;gap:12px;color:#fff;justify-content:flex-end;top:26px;filter:drop-shadow(0 1px 3px #0005)}
+.menu-toggle.on-light{color:var(--ink);filter:none}
+.menulines{width:28px;gap:6px}
+.menulines i{height:2px;background:currentColor;border-radius:2px}
+.menu-close-text{display:none;font-size:13px;align-items:center;gap:8px}
+.menu-close-text b{font-size:24px;font-weight:300;line-height:1}
+.menu-toggle[aria-expanded=true] .menu-close-text{display:inline-flex}
+.menu-toggle[aria-expanded=true] .menulines{display:none}
+.header-actions .availability{margin-right:60px}
+@media(max-width:700px){.menu-toggle{width:auto;top:22px}}
