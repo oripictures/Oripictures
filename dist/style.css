@@ -24,3 +24,7 @@
 .menu-toggle[aria-expanded=true] .menulines{display:none}
 .header-actions .availability{margin-right:60px}
 @media(max-width:700px){.menu-toggle{width:auto;top:22px}}
+
+/* Let the portfolio photos keep their shape (the width/height attributes were forcing them 1250px tall) */
+.work-photo img{height:auto}
+.work-photo img[src$="landscape.jpg"]{object-position:68% 50%}
